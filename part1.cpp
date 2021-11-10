@@ -64,23 +64,8 @@ class counter
                     return left;
             }
         }
-        
-        void print(node* p)
-        {
-            if(p!= nullptr)
-            {
 
-                print(p->left);
-                cout << p->data << ": " << p->counter << endl;
-                print(p->right);
-                
-            }
-            else
-            {
-                return;
-            }
-        }
-
+        //helpter method to write data into a given file
         void write(node* p, fstream& w)
         {
             if(p!= nullptr)
@@ -104,6 +89,7 @@ class counter
             root = nullptr;
         }
 
+        //insert the string into the tree, but increment the existing node's counter if it exists 
         void insert(string d)
         {
             //check if there is a node that exists
@@ -114,16 +100,13 @@ class counter
                 p->counter += 1;
         }
 
+        //find the location of a node with data d
         node* find(string d)
         {
             return recFind(d, root);
         }
 
-        void print()
-        {
-            print(root);
-        }
-
+        //write the tree into the file.
         void write(fstream& w)
         {
             write(root, w);
